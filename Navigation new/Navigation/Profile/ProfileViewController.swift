@@ -9,19 +9,25 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
-    private lazy var profileHeaderView: ProfileHeaderView = {
-        let view = ProfileHeaderView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .lightGray
+
+    private let profileObjects: [ProfileObjects] = [
+        ProfileObjects(image: .mouse, name: "Wise Mouse"),
+                       ]
+    private let profileHeaderView: ProfileHeaderView = {
+        let profileHeaderView = ProfileHeaderView()
+        profileHeaderView.backgroundColor = .lightGray
+        profileHeaderView.translatesAutoresizingMaskIntoConstraints = false
         
-     return view
+        return profileHeaderView
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
         view.backgroundColor = .white
+        
         viewWillLayoutSubviews()
+        
         //   зададим frame равный frame корневого view
         profileHeaderView.frame = view.frame
         
@@ -30,7 +36,7 @@ class ProfileViewController: UIViewController {
     
     func   setupUI() {
         
-        //   добавляем profileHeaderView в качестве дочернего класса
+//           добавляем profileHeaderView в качестве дочернего класса
             view.addSubview(profileHeaderView)
         
         let safeAreaGuide = view.safeAreaLayoutGuide
@@ -54,4 +60,5 @@ class ProfileViewController: UIViewController {
                     ),
                 ])
     }
+
 }

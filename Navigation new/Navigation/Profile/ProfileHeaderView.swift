@@ -7,71 +7,84 @@
 
 import UIKit
 
-class ProfileHeaderView: UIView {
-    
-//    картинка
-    private lazy var image: UIImageView = {
-        let image = UIImageView()
-        image.backgroundColor = .white
-        image.translatesAutoresizingMaskIntoConstraints = false
-        
-        return image
-    }()
-    
-//    Имя
-    private lazy var label: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
-        label.text = "Wise Mouse"
-        label.textColor = .black
-        label.translatesAutoresizingMaskIntoConstraints = false
-        
-        return label
-    }()
-    
-//    текст статуса
-    private lazy var statusText: UITextField = {
-        let text = UITextField()
-        text.backgroundColor = .black
-        text.translatesAutoresizingMaskIntoConstraints = false
-        
-        return text
-    }()
-    
-// кнопка статуса
-    private lazy var statusButton: UIButton = {
-        let statusButton = UIButton()
-        statusButton.translatesAutoresizingMaskIntoConstraints = false
-        statusButton.setTitle("Show Status", for: .normal)
-        statusButton.setTitleColor(.white, for: .normal)
-        
-        return statusButton
-    }()
-
-//        let safeAreaLayoutGuide = view.safeAreaLayoutGuide
-//        NSLayoutConstraint.activate([
-//            statusButton.leadingAnchor.constraint(
-//                equalTo: safeAreaLayoutGuide.leadingAnchor,
-//                constant: 20.0
-//            ),
-//            statusButton.trailingAnchor.constraint(
-//                equalTo: safeAreaLayoutGuide.trailingAnchor,
-//                constant: -20.0
-//            ),
-//            statusButton.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor),
-//            statusButton.heightAnchor.constraint(equalToConstant: 44.0)
-//        ])
-//    statusButton.addTarget(self, action:
-//        #selector(buttonPressed(_:)), for: .touchUpInside)
-//    }
-//    @objc func statusButtonPressed(_ sender: UIButton) {
-//
-//        statusText.modalTransitionStyle = .coverVertical
-//        present(statusText, animated: true)
-//
-//
-//    }
+struct ProfileObjects {
+    var image: UIImage
+    var name: String
 }
 
+class ProfileHeaderView: UIView {
+ 
+    //   add imageView
+    private let imageView: UIImageView = {
+        //    инициализация imageView
+        let imageView = UIImageView()
+//        let myImage = UIImageView(frame: CGRect(x:16.0, y:16.0, width: 60, height: 60))
+        imageView.layer.cornerRadius = 6
+        //        imageView.layer.contents = UIImage(named: "mouse")?.cgImage
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.layer.borderWidth = 3
+        imageView.layer.borderColor = UIColor.white.cgColor
+        
+        return imageView
+    }()
     
+    //    add nameLabel
+    private let nameLabel: UILabel = {
+        let nameLabel = UILabel()
+        //            nameLabel.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        //        nameLabel.text = "Wise Mouse"
+        nameLabel.textColor = .black
+        nameLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        return nameLabel
+    }()
+    
+    
+    
+//    //    текст статуса
+//    private let statusText: UITextField = {
+//        let text = UITextField()
+//        text.backgroundColor = .black
+//        text.translatesAutoresizingMaskIntoConstraints = false
+//        
+//        return text
+//    }()
+//    
+//    // кнопка статуса
+//    private let statusButton: UIButton = {
+//        let statusButton = UIButton()
+//        statusButton.translatesAutoresizingMaskIntoConstraints = false
+//        statusButton.setTitle("Show Status", for: .normal)
+//        statusButton.setTitleColor(.white, for: .normal)
+//        
+//        return statusButton
+//    }()
+  
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
+    func configure(with profileObjects: ProfileObjects) {
+        imageView.image = profileObjects.image
+        nameLabel.text = profileObjects.name
+    }
+    
+    private func setupUI() {
+        addSubview(imageView)
+        addSubview(nameLabel)
+        
+        NSLayoutConstraint.activate([
+            
+            imageView.topAnchor.constraint(equalTo: topAnchor, constant: 16),
+            imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            
+            nameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 27),
+            nameLabel.centerYAnchor.constraint(equalTo: imageView.centerYAnchor)
+        ])
+    }
+}
 
