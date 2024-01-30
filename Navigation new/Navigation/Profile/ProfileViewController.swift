@@ -10,9 +10,9 @@ import UIKit
 class ProfileViewController: UIViewController {
     
 
-    private let profileObjects: [ProfileObjects] = [
-        ProfileObjects(image: .mouse, name: "Wise Mouse"),
-                       ]
+//    private let profileObjects: [ProfileObjects] = [
+//        ProfileObjects(image: .mouse, name: "Wise Mouse"),
+//                       ]
     private let profileHeaderView: ProfileHeaderView = {
         let profileHeaderView = ProfileHeaderView()
         profileHeaderView.backgroundColor = .lightGray
