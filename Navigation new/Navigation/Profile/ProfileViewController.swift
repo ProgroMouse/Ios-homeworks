@@ -21,10 +21,10 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        setupUI()
+        setupProfileUI()
     }
     
-    func   setupUI() {
+    func   setupProfileUI() {
         //           добавляем profileHeaderView в качестве дочернего класса
         view.addSubview(profileHeaderView)
         let safeAreaGuide = view.safeAreaLayoutGuide
@@ -33,7 +33,8 @@ class ProfileViewController: UIViewController {
             profileHeaderView.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor),
             profileHeaderView.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor),
             profileHeaderView.topAnchor.constraint(equalTo: safeAreaGuide.topAnchor),
-            profileHeaderView.bottomAnchor.constraint(equalTo: safeAreaGuide.bottomAnchor),
+            profileHeaderView.heightAnchor.constraint(equalToConstant: 220),
+//            profileHeaderView.bottomAnchor.constraint(equalTo: safeAreaGuide.bottomAnchor),
         ])
     }
 }
