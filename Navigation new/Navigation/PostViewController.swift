@@ -14,7 +14,7 @@ class PostViewController: UIViewController {
         if let post = post {
             title = post.title
         }
-        view.backgroundColor = .white
+        view.backgroundColor = .lightGray
         showBarButton()
     }
     
